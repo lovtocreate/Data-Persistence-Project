@@ -11,6 +11,7 @@ public class MainManager : MonoBehaviour
     public Rigidbody Ball;
 
     public Text ScoreText;
+    public Text BestScoreText;
     public GameObject GameOverText;
     
     private bool m_Started = false;
@@ -35,6 +36,11 @@ public class MainManager : MonoBehaviour
                 brick.PointValue = pointCountArray[i];
                 brick.onDestroyed.AddListener(AddPoint);
             }
+        }
+
+        if (DataManager.Instance.HighScoreText1 != null)
+        {
+            BestScoreText.text = "Best Score : " + DataManager.Instance.HighScoreText1;
         }
     }
 
@@ -72,5 +78,32 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+
+        if (m_Points > DataManager.Instance.HighScore3)
+        {
+            DataManager.Instance.HighScore3 = m_Points;
+            DataManager.Instance.HighScoreText3 = DataManager.Instance.PlayerName + " : " + m_Points;
+        }
+
+        if (m_Points > DataManager.Instance.HighScore2)
+        {
+            DataManager.Instance.HighScore3 = DataManager.Instance.HighScore2;
+            DataManager.Instance.HighScoreText3 = DataManager.Instance.HighScoreText2;
+            DataManager.Instance.HighScore2 = m_Points;
+            DataManager.Instance.HighScoreText2 = DataManager.Instance.PlayerName + " : " + m_Points;
+        }
+
+        if (m_Points > DataManager.Instance.HighScore1)
+        {
+            DataManager.Instance.HighScore2 = DataManager.Instance.HighScore1;
+            DataManager.Instance.HighScoreText2 = DataManager.Instance.HighScoreText1;
+            DataManager.Instance.HighScore1 = m_Points;
+            DataManager.Instance.HighScoreText1 = DataManager.Instance.PlayerName + " : " + m_Points;
+        }
+
+        if (DataManager.Instance.HighScoreText1 != null)
+        {
+            BestScoreText.text = "Best Score : " + DataManager.Instance.HighScoreText1;
+        }
     }
 }
