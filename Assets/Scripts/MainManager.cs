@@ -106,4 +106,9 @@ public class MainManager : MonoBehaviour
             BestScoreText.text = "Best Score : " + DataManager.Instance.HighScoreText1;
         }
     }
+
+    public void LoadMenuScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

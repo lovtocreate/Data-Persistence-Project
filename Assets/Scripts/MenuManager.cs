@@ -56,8 +56,8 @@ public class MenuManager : MonoBehaviour
     public void QuitApp()
     {
         DataManager.Instance.SaveScores();
-        //Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void SetDifficulty(int difficulty)
