@@ -56,7 +56,20 @@ public class MainManager : MonoBehaviour
                 forceDir.Normalize();
 
                 Ball.transform.SetParent(null);
-                Ball.AddForce(forceDir * 2.0f, ForceMode.VelocityChange);
+                if (DataManager.Instance.Difficulty == 1)
+                {
+                    Ball.AddForce(forceDir, ForceMode.VelocityChange);
+                }
+
+                if (DataManager.Instance.Difficulty == 2)
+                {
+                    Ball.AddForce(forceDir * 2, ForceMode.VelocityChange);
+                }
+
+                if (DataManager.Instance.Difficulty == 3)
+                {
+                    Ball.AddForce(forceDir * 4, ForceMode.VelocityChange);
+                }
             }
         }
         else if (m_GameOver)

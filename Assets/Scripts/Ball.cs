@@ -10,6 +10,21 @@ public class Ball : MonoBehaviour
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
+
+        if (DataManager.Instance.Difficulty == 1)
+        {
+            gameObject.transform.localScale = new Vector3(.09375f, 1.5f, .15f);
+        }
+
+        if (DataManager.Instance.Difficulty == 2)
+        {
+            gameObject.transform.localScale = new Vector3(.1875f, 1.5f, .15f);
+        }
+
+        if (DataManager.Instance.Difficulty == 3)
+        {
+            gameObject.transform.localScale = new Vector3(.25f, 1.5f, .15f);
+        }
     }
     
     private void OnCollisionExit(Collision other)

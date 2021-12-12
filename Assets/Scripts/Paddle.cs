@@ -10,7 +10,20 @@ public class Paddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (DataManager.Instance.Difficulty == 1)
+        {
+            gameObject.transform.localScale = new Vector3(1.4f, .1f, 1);
+        }
+
+        if (DataManager.Instance.Difficulty == 2)
+        {
+            gameObject.transform.localScale = new Vector3(.8f, .1f, 1);
+        }
+
+        if (DataManager.Instance.Difficulty == 3)
+        {
+            gameObject.transform.localScale = new Vector3(.5f, .1f, 1);
+        }
     }
 
     // Update is called once per frame
